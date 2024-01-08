@@ -6,18 +6,22 @@ const URL = `http://localhost:5000/drivers`
 
 
 const getDriverById = async (id, source) => {
-    const driver =
-        source === "api"
-            ? (await axios.get(`${URL}/${id}`)).data
-            : await Driver.findByPk(id, {
-                include: {
-                    model: Team,
-                    attribute: ["name"]
-                }
+    try {
+        if (source === "api") {
+            const infoApi = (await axios.get(`${URL}/${id}`)).data;
+            const driverApi = mappingDrivers([infoApi])[0] ;
+            return driverApi;
+        } else {
+            const driverById2 = await Driver.findByPk(id, {
+                include: Team
             });
-        const cleanDriverData = mappingDrivers([driver])[0]
-    return cleanDriverData;
-}
+            return driverById2;
+        }
+    } catch (error) {
+        throw new Error(`Error in getDriverById: ${error.message}`);
+    }
+};
+
 
 module.exports = {
     getDriverById
