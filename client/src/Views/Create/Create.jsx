@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { postDriver } from '../../Redux/Actions/actions';
+import { useDispatch } from 'react-redux';
 
 const Create = () => {
+
+  const dispatch = useDispatch();
 
   const [state, setState] = useState({
     name: "",
@@ -147,9 +151,16 @@ const Create = () => {
     })
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(postDriver(state));
+
+  }
+
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <label>Nombre: </label>
           <input onChange={handleChange} type="text" name="name" id="name" placeholder="Name" />

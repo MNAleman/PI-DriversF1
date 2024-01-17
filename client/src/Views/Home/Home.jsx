@@ -1,21 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Cards from '../../Components/Cards/Cards.jsx'
-function Home(){
-  const arr = [{
-  name: "Juan Manuel",
-  lastName: "Fangio",
-  description: "Fue el mejor corredor te toda la historia de todos los tiempos",
-  image: "laURLqueTieneLaFotoDeJMFangio.jpg",
-  nationality: "Argentino",
-  birthdate: "1911-06-24",
-  teams: ["Alfa Romeo", "Maserati", "Mercedes", "Ferrari"]
-  
-  }]
+import { useDispatch, useSelector } from 'react-redux'
+import { changePage, getDriver } from '../../Redux/Actions/actions.js'
+
+const Home = () => {
+
+  const dispatch = useDispatch();
+
+  const allDrivers = useSelector(state => state.allDrivers)
+  const currentPage = useSelector(state => state.currentPage)
+
+  useEffect(() => {
+    dispatch(getDriver())
+  }, [])
+
+  const pagination = (event) =>{
+    dispatch(changePage(event.target.name))
+  }
 
 
   return (
-    <div className='home-cont'>
-      <Cards info={arr}></Cards>
+    <div>
+      
+    <div className='home-p-n-buttons'>
+      <button className="direction-btn" onClick={pagination } name='prev'>{"<<"}</button>
+      <span>  {currentPage + 1}  </span>
+      <button className="direction-btn"onClick={pagination } name='next'>{">>"}</button>
+    </div>
+      <div className='home-cont'>
+      <Cards info={allDrivers}></Cards>
+    </div>
     </div>
   )
 }

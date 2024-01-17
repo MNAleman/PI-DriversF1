@@ -66,6 +66,21 @@
     justify-content: center;
     align-items: center;
     height: 90vh;
+    /* margin-top: 0.5rem;  */
+}
+
+.home-p-n-buttons{
+    /* background-color: #007bff; */
+    color: #1ab517;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 3rem; 
+}
+button.direction-btn{
+    background-color: #2611c2;
 }
 
 button.remove-btn {
@@ -76,4 +91,8 @@ button.remove-btn {
     cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
     border-radius: 15%; /* Hace que el botón tenga forma redonda */
     margin-left: 5px; /* Ajuste de margen izquierdo para separación */
+  }
+
+  .card-cont-img img{
+    width: 6rem;
   }

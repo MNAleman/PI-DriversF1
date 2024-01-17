@@ -4,7 +4,7 @@ const Cards = ({ info }) => {
   return (
     <div className='cards-cont'>
       {
-        info.map(d => <Card key={d.name} name={d.name} lastName={d.lastName} description={d.description} image={d.image} nationality={d.nationality} birthdate={d.birthdate} teams={d.teams} />)
+        info.map(d => <Card key={d.id} name={d.name} lastName={d.lastName}image={d.image} nationality={d.nationality} birthdate={d.birthdate}  />)
       }
     </div>
   )
@@ -12,3 +12,5 @@ const Cards = ({ info }) => {
 
 export default Cards
 
+// description={d.description} 
+//teams={d.teams}
