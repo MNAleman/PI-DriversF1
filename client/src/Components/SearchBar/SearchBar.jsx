@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { searchDriver } from '../../Redux/Actions/actions'
 
+
 const SearchBar = () => {
   const dispatch = useDispatch()
   const [input, setInput] = useState("")
